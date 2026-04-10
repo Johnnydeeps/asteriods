@@ -9,6 +9,8 @@ def main():
     print(f"Starting Asteroids with pygame version: {pygame.version.ver}")
     print(f"Screen width: {SCREEN_WIDTH}")
     print(f"Screen height: {SCREEN_HEIGHT}")
+    print("===============================")
+    print("All gas, no brakes...pew pew")
 
     # pygame configuration
     pygame.init()
@@ -21,6 +23,12 @@ def main():
     # Player logic and import from player.py
     x = SCREEN_WIDTH / 2
     y = SCREEN_HEIGHT / 2
+
+    # added Groups as per lesson for organisation of objects into updatable and
+    # drawable categories. Groups are a class that contains multiple objects(Classes).
+    updatable = pygame.sprite.Group()
+    drawable = pygame.sprite.Group()
+    Player.containers = (updatable, drawable)
     player = Player(x, y)
 
     # Game loop logic
@@ -33,8 +41,9 @@ def main():
 
         screen.fill("black")
         dt = clock.tick(60) / 1000
-        player.update(dt)
-        player.draw(screen)
+        updatable.update(dt)
+        for instance in drawable:
+            instance.draw(screen)
         pygame.display.flip()
 
 
