@@ -32,9 +32,10 @@ def main():
                 return
 
         screen.fill("black")
+        dt = clock.tick(60) / 1000
+        player.update(dt)
         player.draw(screen)
         pygame.display.flip()
-        dt = clock.tick(60) / 1000  # noqa: F841
 
 
 if __name__ == "__main__":
