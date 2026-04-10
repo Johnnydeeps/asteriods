@@ -7,6 +7,8 @@ LINE_WIDTH = 2
 # player parameters
 PLAYER_TURN_SPEED = 300
 PLAYER_SPEED = 200
+SHOT_RADIUS = 5
+PLAYER_SHOOT_SPEED = 500
 
 # asteroid parameters
 ASTEROID_MIN_RADIUS = 20
