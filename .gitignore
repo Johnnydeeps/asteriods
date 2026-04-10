@@ -11,3 +11,4 @@ wheels/
 
 # Ignore Logs
 game_state.jsonl
+game_events.jsonl
