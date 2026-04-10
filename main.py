@@ -2,6 +2,7 @@ import pygame
 
 from constants import SCREEN_HEIGHT, SCREEN_WIDTH
 from logger import log_state
+from player import Player
 
 
 def main():
@@ -17,6 +18,11 @@ def main():
     # "screen" variable defined as an object called from pygame library from Surface Class.
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 
+    # Player logic and import from player.py
+    x = SCREEN_WIDTH / 2
+    y = SCREEN_HEIGHT / 2
+    player = Player(x, y)
+
     # Game loop logic
     while True:
         log_state()
@@ -26,8 +32,8 @@ def main():
                 return
 
         screen.fill("black")
+        player.draw(screen)
         pygame.display.flip()
-        clock.tick(60)
         dt = clock.tick(60) / 1000  # noqa: F841
 
 
