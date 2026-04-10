@@ -1,5 +1,7 @@
 import pygame
 
+from asteroid import Asteroid
+from asteroidfield import AsteroidField
 from constants import SCREEN_HEIGHT, SCREEN_WIDTH
 from logger import log_state
 from player import Player
@@ -9,8 +11,8 @@ def main():
     print(f"Starting Asteroids with pygame version: {pygame.version.ver}")
     print(f"Screen width: {SCREEN_WIDTH}")
     print(f"Screen height: {SCREEN_HEIGHT}")
-    print("===============================")
-    print("All gas, no brakes...pew pew")
+    print("================================")
+    print("All gas, no brakes...pew pew pew")
 
     # pygame configuration
     pygame.init()
@@ -28,8 +30,13 @@ def main():
     # drawable categories. Groups are a class that contains multiple objects(Classes).
     updatable = pygame.sprite.Group()
     drawable = pygame.sprite.Group()
+    asteroids = pygame.sprite.Group()
     Player.containers = (updatable, drawable)
+    Asteroid.containers = (asteroids, updatable, drawable)
+    AsteroidField.containers = updatable
+
     player = Player(x, y)
+    AsteroidField()
 
     # Game loop logic
     while True:
